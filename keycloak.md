@@ -3,7 +3,7 @@
 
 - [Secure Kubernetes Native Application by OpenID with Keycloak](#secure-kubernetes-native-application-by-openid-with-keycloak)
   - [Presentation](#presentation)
-  - [Setup Demo](#setup-demo)
+  - [Micro service with Kafka & Quarkus](#micro-service-with-kafka--quarkus)
   - [Secure Web Application with Keycloak](#secure-web-application-with-keycloak)
   - [Test Secure Web Application with Keycloak](#test-secure-web-application-with-keycloak)
   - [2FA with Keycloak (user/password & OTP)](#2fa-with-keycloak-userpassword--otp)
@@ -19,7 +19,7 @@ Demo Application
 
 ![](images/keycloak-demo.png)
 
-## Setup Demo
+## Micro service with Kafka & Quarkus
 
 - get source code from devnation 
   - https://github.com/akoserwal/devnationtt-vue-keycloak

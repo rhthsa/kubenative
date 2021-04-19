@@ -16,8 +16,6 @@
   - Micro service with Kafka & Quarkus
   - Change Data Capture (CDC) with AMQ Streams & Debezium
 - [Secure Kubernetes Native Application by OpenID with Keycloak](keycloak.md)
-  - How to secure (micro) services?
-  - What is Keycloak?
   - Secure Web Application with Keycloak
   - 2FA with Keycloak (user/password & OTP)
   - Secure Micro Service with Keycloak
