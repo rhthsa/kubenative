@@ -1,0 +1,15 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: demo-pdb
+spec:
+  maxUnavailable: 40%
+  selector:
+    matchLabels:
+      app: demo
+
+# oc adm cordon ip-10-0-156-77.ap-southeast-1.compute.internal
+# oc get node ip-10-0-156-77.ap-southeast-1.compute.internal
+# oc adm drain ip-10-0-156-77.ap-southeast-1.compute.internal --pod-selector=app=demo
+# Another terminal
+# while [ 1 ];do;oc get pods --field-selector status.phase=Running | grep demo | grep Running | wc -l;sleep 2;clear;done

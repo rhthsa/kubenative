@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: 'https://gitlab.com/ocp-demo/backend_quarkus'
+  labels:
+    app.kubernetes.io/component: demo
+    app.kubernetes.io/instance: demo
+    app.kubernetes.io/name: java
+    app.kubernetes.io/part-of: App-Z
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: '11'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+      version: v1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demo
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: backend
+        image: quay.io/voravitl/backend-native:v1
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "0.1"
+            memory: 50Mi
+          limits:
+            cpu: "0.2"
+            memory: 200Mi
+        env:
+          - name: APP_BACKEND
+            value: https://httpbin.org/status/200
+          - name: APP_VERSION
+            value: v1
+          - name: quarkus.log.console.color
+            value: 'false'
+        ports:
+        - containerPort: 8080
+      nodeSelector:
+        tier: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  ports:
+  - port: 8080
+    name: http
+    targetPort: 8080
+  selector:
+    app: demo
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: demo
+spec:
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: demo
+    weight: 100
+  wildcardPolicy: None

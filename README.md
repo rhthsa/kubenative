@@ -3,7 +3,7 @@
 ![](images/ebook.jpeg)
 
 ## Table of Contents
-- [Best Practices for Developing Kubernetes Native Applications](https://github.com/rhthsa/k8s-best-pratices-webinar/blob/main/README.md)
+- [Best Practices for Developing Kubernetes Native Applications](k8s-best-practices.md)
   - Presentation ([practice.pptx](presentation/practice.pptx))
 - [Kubernetes Native Java for Spring Developer](quarkus.md)
   - First Quarkus
